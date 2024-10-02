@@ -1,0 +1,8 @@
+.board-card {
+
+  background-color: brown;
+  border-radius: 6px;
+
+  padding: 8px;
+  min-height: 80px;
+}

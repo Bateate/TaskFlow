@@ -1,0 +1,36 @@
+.workspace__container {
+    min-width: 300px;
+    width: auto;
+    height: fit-content;
+    padding: 8px;
+}
+
+h6 {
+    color: #dedddda5;
+}
+.workspace {
+    display: flex;
+    height: 100%;
+    gap: 8px;
+}
+
+.workspace__avatar {
+    background-color: blueviolet;
+    border-radius: 8px;
+    display: flex;
+    place-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    aspect-ratio: 1/1;
+    /* color: transparent; */
+}
+
+.workspace__title {
+    height: fit-content;
+}
+
+.workspace__title img {
+    height: 16px;
+    width: 16px;
+}

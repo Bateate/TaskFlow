@@ -1,0 +1,19 @@
+section {
+  padding-inline: 32px;
+  width: 100%;
+}
+
+article {
+    padding: 32px 0;
+}
+
+.active-workspace__container {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #dedddd08;
+}
+
+.boards-header {
+    margin-bottom: 32px;
+}

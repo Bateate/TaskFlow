@@ -1,4 +1,4 @@
-import WorkspacesSidebar from "./ui/WorkspaceSidebar";
+import WorkspacesSidebar from "../ui/WorkspacesSidebar/WorkspacesSidebar";
 import { Outlet } from "react-router-dom";
 import "./WorkspacesLayout.css";
 
