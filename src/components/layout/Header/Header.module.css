@@ -1,0 +1,12 @@
+.header {
+  /* width: 100vw; */
+  padding: 8px;
+  display: flex;
+  gap: 16px;
+  border-bottom: 1px solid #dedddda5;
+  color: #dedddda5;
+}
+
+.link {
+  color: #dedddda5;
+}
