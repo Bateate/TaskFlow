@@ -26,6 +26,10 @@ const router = createBrowserRouter([
           },
         ],
       },
+      {
+        path: "board/:id",
+        element: <Home />,
+      },
     ],
   },
 ]);

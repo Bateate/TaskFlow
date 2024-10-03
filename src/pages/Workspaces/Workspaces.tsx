@@ -12,9 +12,9 @@ function Workspaces() {
   const [selected, setSelected] = useState<SelectOption | null>(null);
   
   const workspaceBoards: Board[] = [
-    {title: 'TaskFlow Board'},
-    {title: 'First Board'},
-    {title: 'Second Board'},
+    {title: 'TaskFlow Board', id: '0'},
+    {title: 'First Board', id: '1'},
+    {title: 'Second Board', id: '2'},
 
   ] 
 

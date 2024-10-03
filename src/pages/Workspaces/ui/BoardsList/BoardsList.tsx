@@ -7,8 +7,8 @@ import "./BoardsList.css";
 function BoardsList({ boards }: BoardsListProps) {
   return (
     <ul className="boards-list">
-      {boards.map((board, index) => (
-        <BoardCard key={index} board={board} />
+      {boards.map((board) => (
+        <BoardCard key={board.id} board={board} />
       ))}
     </ul>
   );

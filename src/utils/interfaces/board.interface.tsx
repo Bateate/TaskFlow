@@ -1,5 +1,6 @@
 export interface Board {
     title: string;
+    id: string
     color?: string;
     isFavorite?: boolean;
 }
