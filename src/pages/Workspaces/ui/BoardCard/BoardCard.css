@@ -1,0 +1,14 @@
+.board-card {
+  background-color: #a52a2a;
+  border-radius: 6px;
+
+  padding: 8px;
+  min-height: 80px;
+
+  cursor: pointer;
+  transition: 300ms ease;
+}
+
+.board-card:hover {
+  background-color: #a52a2a90;
+}

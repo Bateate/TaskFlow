@@ -5,7 +5,7 @@ import RootLayout from "./components/layout/RootLayout/RootLayout";
 import Home from "./pages/Home";
 import Workspaces from "./pages/Workspaces/Workspaces";
 import "./styles/index.css";
-import WorkspacesLayout from "./pages/Workspaces/WorkspacesLayout";
+import WorkspacesLayout from "./pages/Workspaces/layout/WorkspacesLayout";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +25,10 @@ const router = createBrowserRouter([
             element: <Workspaces />,
           },
         ],
+      },
+      {
+        path: "board/:id",
+        element: <Home />,
       },
     ],
   },
