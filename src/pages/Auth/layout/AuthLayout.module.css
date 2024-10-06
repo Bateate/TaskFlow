@@ -1,0 +1,17 @@
+.authBackground {
+  background-image: url("../../../assets/classic-wow-bg2.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
+  /* Size */
+  max-width: 100vw;
+  min-height: 100vh;
+  width: 100%;
+  height: 100%;
+
+  /* COntent Position */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,7 +1,7 @@
 import Button from "../../components/common/Button/Button";
 import WorkspaceAvatar from "./ui/WorkspaceAvatar/WorkspaceAvatar";
 import addMemberIcon from "../../assets/add-member.svg";
-import "./Workspaces.css";
+import classes from "./Workspaces.module.css";
 import { SelectOption } from "../../utils/interfaces/select.interface";
 import { useState } from "react";
 import Select from "../../components/common/Select/Select";
@@ -31,15 +31,15 @@ function Workspaces() {
 
   return (
     <section>
-      <article className="active-workspace__container">
+      <article className={classes.activeWorkspace__container}>
         <WorkspaceAvatar />
-        <Button>
+        <Button classes={classes} onClick={() => {}}>
           <img src={addMemberIcon} alt="Add Member Icon" />
           Invite workspace member
         </Button>
       </article>
-      <article className="boards__container">
-        <h2 className="boards-header">Boards</h2>
+      <article className={classes.boards__container}>
+        <h2 className={classes.boards__header}>Boards</h2>
         <Select
           options={sortSelectOptions}
           label="Sort by"
