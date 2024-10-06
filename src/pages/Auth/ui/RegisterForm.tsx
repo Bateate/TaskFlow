@@ -1,9 +1,9 @@
 import { useRef } from "react";
 import Input from "../../../components/common/Input/Input";
-import { RegisterParamsI } from "../../../utils/interfaces/auth.interface";
 import classes from "./authShared.module.css";
 import { Form, Link } from "react-router-dom";
 import Button from "../../../components/common/Button/Button";
+import { RegisterParamsI } from "../../../utils/interfaces/req-res.interface";
 
 interface Props {
   isLoading: boolean;

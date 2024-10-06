@@ -1,6 +1,7 @@
 import Sidebar from "../../../../components/common/Sidebar/Sidebar";
+import { WorkspaceI } from "../../../../utils/interfaces/shared.interface";
 
-function WorkspacesSidebar() {
+function WorkspacesSidebar(props?: {workspaces: WorkspaceI[]}) {
   return (
     <Sidebar>
       <h3>Board</h3>

@@ -1,8 +1,6 @@
 import { createUser, loginUser } from "../api/workspace";
-import {
-  LoginParamsI,
-  RegisterParamsI,
-} from "../utils/interfaces/auth.interface";
+import { LoginParamsI, RegisterParamsI } from "../utils/interfaces/req-res.interface";
+
 
 export const authenticateUser = async (params: LoginParamsI) => {
   const response = await loginUser(params);

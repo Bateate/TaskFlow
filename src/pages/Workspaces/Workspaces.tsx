@@ -1,22 +1,14 @@
-import Button from "../../components/common/Button/Button";
-import WorkspaceAvatar from "./ui/WorkspaceAvatar/WorkspaceAvatar";
-import addMemberIcon from "../../assets/add-member.svg";
-import classes from "./Workspaces.module.css";
-import { SelectOption } from "../../utils/interfaces/select.interface";
 import { useState } from "react";
+import addMemberIcon from "../../assets/add-member.svg";
+import Button from "../../components/common/Button/Button";
 import Select from "../../components/common/Select/Select";
+import { SelectOption } from "../../utils/interfaces/common.interface";
 import BoardsList from "./ui/BoardsList/BoardsList";
-import { Board } from "../../utils/interfaces/board.interface";
+import WorkspaceAvatar from "./ui/WorkspaceAvatar/WorkspaceAvatar";
+import classes from "./Workspaces.module.css";
+
 function Workspaces() {
-
   const [selected, setSelected] = useState<SelectOption | null>(null);
-  
-  const workspaceBoards: Board[] = [
-    {title: 'TaskFlow Board', id: '0'},
-    {title: 'First Board', id: '1'},
-    {title: 'Second Board', id: '2'},
-
-  ] 
 
   const sortSelectOptions: SelectOption[] = [
     { value: "option1", label: "Option 1" },
@@ -27,7 +19,6 @@ function Workspaces() {
   const sortSelectHandler = (option: SelectOption) => {
     setSelected(option);
   };
-
 
   return (
     <section>
@@ -45,9 +36,11 @@ function Workspaces() {
           label="Sort by"
           onChange={sortSelectHandler}
         />
-        <BoardsList boards={workspaceBoards} />
+        <BoardsList/>
       </article>
     </section>
   );
 }
 export default Workspaces;
+
+export function loader() {}

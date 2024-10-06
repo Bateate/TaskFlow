@@ -1,13 +1,13 @@
-import "./WorkspaceAvatar.css";
+import classes from "./WorkspaceAvatar.module.css";
 import editIcon from "../../../../assets/edit.svg"
 function WorkspaceAvatar() {
   return (
-    <div className="workspace__container">
-      <div className="workspace">
-        <div className="workspace__avatar">
+    <div className={classes.workspace__container}>
+      <div className={classes.workspace}>
+        <div className={classes.workspace__avatar}>
           <h1>T</h1>
         </div>
-        <div className="workspace__title">
+        <div className={classes.workspace__title}>
           <h3>TaskFlow <img src={editIcon} alt="Edit Icon" /></h3>
           <h6>Private/Public</h6>
         </div>

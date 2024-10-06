@@ -1,8 +1,8 @@
 // import classes from "../../styles/authShared.module.css";
 import { useNavigate } from "react-router-dom";
 import { registerUser } from "../../services/userService";
-import { RegisterParamsI } from "../../utils/interfaces/auth.interface";
 import RegisterForm from "./ui/RegisterForm";
+import { RegisterParamsI } from "../../utils/interfaces/req-res.interface";
 function RegisterPage() {
   const navigate = useNavigate();
 

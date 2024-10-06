@@ -2,8 +2,8 @@ import { useRef } from "react";
 import { Form, Link } from "react-router-dom";
 import Button from "../../../components/common/Button/Button";
 import Input from "../../../components/common/Input/Input";
-import { LoginParamsI } from "../../../utils/interfaces/auth.interface";
 import classes from "./authShared.module.css";
+import { LoginParamsI } from "../../../utils/interfaces/req-res.interface";
 
 interface Props {
   isLoading: boolean;

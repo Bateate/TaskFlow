@@ -1,24 +1,24 @@
+import { LoginParamsI, LoginResponseI, RegisterParamsI, RegisterResponseI } from "../../utils/interfaces/req-res.interface";
 import { onFetch } from "../../utils/onFetch";
-import * as authI from "../../utils/interfaces/auth.interface";
 
 const authBaseUri = "http://localhost:3001/api/user";
 
-export const loginUser = async (body?: authI.LoginParamsI) => {
+export const loginUser = async (body?: LoginParamsI) => {
   const reqParams = {
     url: `${authBaseUri}/login`,
     method: "POST",
     body: body,
   };
-  const res = await onFetch<authI.LoginResponseI>(reqParams);
+  const res = await onFetch<LoginResponseI>(reqParams);
   return await res;
 };
 
-export const createUser = async (body: authI.RegisterParamsI) => {
+export const createUser = async (body: RegisterParamsI) => {
   const reqParams = {
     url: `${authBaseUri}/register`,
     method: "POST",
     body: body,
   };
-  const res = await onFetch<authI.RegisterResponseI>(reqParams);
+  const res = await onFetch<RegisterResponseI>(reqParams);
   return await res;
 };

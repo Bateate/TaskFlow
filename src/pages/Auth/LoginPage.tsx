@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../api/workspace";
-import { LoginParamsI } from "../../utils/interfaces/auth.interface";
 import LoginForm from "./ui/LoginForm";
+import { LoginParamsI } from "../../utils/interfaces/req-res.interface";
 function LoginPage() {
   const navigate = useNavigate();
 
