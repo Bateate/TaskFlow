@@ -17,3 +17,8 @@ article {
 .boards__header {
   margin-bottom: 32px;
 }
+
+.workspace__page {
+  box-sizing: border-box;
+  flex: 1;
+}

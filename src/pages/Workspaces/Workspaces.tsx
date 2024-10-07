@@ -25,7 +25,7 @@ function Workspaces() {
   };
 
   return (
-    <section>
+    <section className={classes.workspace__page}>
       <article className={classes.activeWorkspace__container}>
         <WorkspaceAvatar />
         <Button classes={classes}>
