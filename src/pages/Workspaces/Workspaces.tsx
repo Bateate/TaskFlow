@@ -1,22 +1,18 @@
-import Button from "../../components/common/Button/Button";
-import WorkspaceAvatar from "./ui/WorkspaceAvatar/WorkspaceAvatar";
-import addMemberIcon from "../../assets/add-member.svg";
-import "./Workspaces.css";
-import { SelectOption } from "../../utils/interfaces/select.interface";
 import { useState } from "react";
+import { useLoaderData } from "react-router-dom";
+import addMemberIcon from "../../assets/add-member.svg";
+import Button from "../../components/common/Button/Button";
 import Select from "../../components/common/Select/Select";
+import { getWorkspaceById } from "../../services/workspaceService";
+import { SelectOption } from "../../utils/interfaces/common.interface";
+import { WorkspaceI } from "../../utils/interfaces/shared.interface";
 import BoardsList from "./ui/BoardsList/BoardsList";
-import { Board } from "../../utils/interfaces/board.interface";
+import WorkspaceAvatar from "./ui/WorkspaceAvatar/WorkspaceAvatar";
+import classes from "./Workspaces.module.css";
+
 function Workspaces() {
-
   const [selected, setSelected] = useState<SelectOption | null>(null);
-  
-  const workspaceBoards: Board[] = [
-    {title: 'TaskFlow Board', id: '0'},
-    {title: 'First Board', id: '1'},
-    {title: 'Second Board', id: '2'},
-
-  ] 
+  const workspace = useLoaderData() as WorkspaceI;
 
   const sortSelectOptions: SelectOption[] = [
     { value: "option1", label: "Option 1" },
@@ -28,26 +24,30 @@ function Workspaces() {
     setSelected(option);
   };
 
-
   return (
     <section>
-      <article className="active-workspace__container">
+      <article className={classes.activeWorkspace__container}>
         <WorkspaceAvatar />
-        <Button>
+        <Button classes={classes}>
           <img src={addMemberIcon} alt="Add Member Icon" />
           Invite workspace member
         </Button>
       </article>
-      <article className="boards__container">
-        <h2 className="boards-header">Boards</h2>
+      <article className={classes.boards__container}>
+        <h2 className={classes.boards__header}>Boards</h2>
         <Select
           options={sortSelectOptions}
           label="Sort by"
           onChange={sortSelectHandler}
         />
-        <BoardsList boards={workspaceBoards} />
+        <BoardsList boards={workspace.boards}/>
       </article>
     </section>
   );
 }
 export default Workspaces;
+
+export async function loader(urlParams: { params: { workspaceId: string } }) {
+  const workspace = await getWorkspaceById(urlParams.params.workspaceId);
+  return (await workspace?.data);
+}

@@ -1,10 +1,7 @@
-
 import { useState } from "react";
-import "./Select.css";
-import {
-  SelectOption,
-  SelectProps,
-} from "../../../utils/interfaces/select.interface";
+import classes from "./Select.module.css";
+import { SelectOption, SelectProps } from "../../../utils/interfaces/common.interface";
+
 
 
 function Select({ options, label, onChange }: SelectProps) {
@@ -22,20 +19,20 @@ function Select({ options, label, onChange }: SelectProps) {
   };
 
   return (
-    <div className="select">
-      <div className="select-label">{label}</div>
-      <div className="select-control" onClick={toggleDropdown}>
-        <div className="selected-value">
+    <div className={classes.select}>
+      <div className={classes.select__label}>{label}</div>
+      <div className={classes.select__control} onClick={toggleDropdown}>
+        <div className={classes.selected__value}>
           {selectedOption ? selectedOption.label : "Select an option"}
         </div>
-        <div className="arrow">{isOpen ? "▲" : "▼"}</div>
+        <div className={classes.arrow}>{isOpen ? "▲" : "▼"}</div>
       </div>
       {isOpen && (
-        <ul className="select-options">
+        <ul className={classes.select__options}>
           {options.map((option) => (
             <li
               key={option.value}
-              className="select-option"
+              className={classes.select__option}
               onClick={() => handleSelectOption(option)}
             >
               {option.label}
