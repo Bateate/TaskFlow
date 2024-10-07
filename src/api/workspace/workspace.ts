@@ -1,10 +1,10 @@
-import { CreateWorkspaceRequestI, CreateWorkspaceResponseI, GetAllWorkspacesResponseI } from "../../utils/interfaces/req-res.interface";
-import { WorkspaceI } from "../../utils/interfaces/shared.interface";
+import { CreateWorkspaceRequestI, CreateWorkspaceResponseI } from "../../utils/interfaces/req-res.interface";
+import { AllWorkspacesI, WorkspaceI } from "../../utils/interfaces/shared.interface";
 import { onFetch } from "../../utils/onFetch";
 
 const workspaceBaseUri = "http://localhost:3001/api/workspace";
 
-export const createWorkspace = async (
+export const createWorkspaceRequest = async (
   body?: CreateWorkspaceRequestI
 ) => {
   const reqParams = {
@@ -16,16 +16,16 @@ export const createWorkspace = async (
   return await res;
 };
 
-export const getAllWorkspaces = async () => {
+export const getAllWorkspacesRequest = async () => {
   const reqParams = {
     url: `${workspaceBaseUri}`,
     method: "GET",
   };
-  const res = await onFetch<GetAllWorkspacesResponseI>(reqParams);
+  const res = await onFetch<AllWorkspacesI>(reqParams);
   return await res;
 };
 
-export const getWorkspacesById = async (id: string) => {
+export const getWorkspacesByIdRequest = async (id: string) => {
   const reqParams = {
     url: `${workspaceBaseUri}/${id}`,
     method: "GET",
@@ -34,7 +34,7 @@ export const getWorkspacesById = async (id: string) => {
   return await res;
 };
 
-export const deleteWorkspace = async (id: string) => {
+export const deleteWorkspaceRequest = async (id: string) => {
   const reqParams = {
     url: `${workspaceBaseUri}/${id}`,
     method: "DELETE",

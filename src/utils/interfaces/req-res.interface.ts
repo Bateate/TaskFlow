@@ -31,10 +31,6 @@ export interface CreateWorkspaceResponseI {
   newWorkspace: WorkspaceI;
 }
 
-export interface GetAllWorkspacesResponseI {
-  userWorkspaces: WorkspaceI[];
-  sharedWorkspaces: WorkspaceI[];
-}
 
 // Board
 export interface CreateBoardRequestI {

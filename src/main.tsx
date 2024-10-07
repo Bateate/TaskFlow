@@ -1,13 +1,13 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider, createBrowserRouter, useParams } from "react-router-dom";
 import RootLayout from "./components/layout/RootLayout/RootLayout";
 import AuthLayout from "./pages/Auth/layout/AuthLayout";
 import LoginPage from "./pages/Auth/LoginPage";
 import RegisterPage from "./pages/Auth/Register";
 import Home from "./pages/Home";
-import WorkspacesLayout from "./pages/Workspaces/layout/WorkspacesLayout";
-import Workspaces from "./pages/Workspaces/Workspaces";
+import WorkspacesLayout, { loader as workspacesLayoutLoader } from "./pages/Workspaces/layout/WorkspacesLayout";
+import Workspaces, { loader as workspacesLoader } from "./pages/Workspaces/Workspaces";
 import "./styles/index.css";
 
 const router = createBrowserRouter([
@@ -22,13 +22,15 @@ const router = createBrowserRouter([
       {
         path: "/workspaces",
         element: <WorkspacesLayout />,
+        loader: workspacesLayoutLoader,
         children: [
           {
-            path: "/workspaces",
+            path: ":workspaceId",
             element: <Workspaces />,
+            loader: workspacesLoader
           },
           {
-            path: "board/:id",
+            path: "board/:boardId",
             element: <Workspaces />,
           },
         ],

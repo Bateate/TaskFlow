@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../../api/workspace";
 import LoginForm from "./ui/LoginForm";
 import { LoginParamsI } from "../../utils/interfaces/req-res.interface";
+import { authenticateUser } from "../../services/userService";
 function LoginPage() {
   const navigate = useNavigate();
 
   const onLoginHandler = async (params: LoginParamsI) => {
-    const res = await loginUser(params);
+    const res = await authenticateUser(params);
     if (res.data?.token) {
       navigate("/");
     }

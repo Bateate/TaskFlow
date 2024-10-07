@@ -4,7 +4,7 @@ import { onFetch } from "../../utils/onFetch";
 
 const boardBaseUri = "http://localhost:3001/api/board";
 
-export const createBoard = async (body: CreateBoardRequestI) => {
+export const createBoardRequest = async (body: CreateBoardRequestI) => {
   const reqParams = {
     url: `${boardBaseUri}`,
     method: "POST",
@@ -14,7 +14,7 @@ export const createBoard = async (body: CreateBoardRequestI) => {
   return await res;
 };
 
-export const getBoardsByWorkspace = async (workspaceId: string) => {
+export const getBoardsByWorkspaceRequest = async (workspaceId: string) => {
   const reqParams = {
     url: `${boardBaseUri}/workspace/${workspaceId}`,
     method: "GET",
@@ -23,7 +23,7 @@ export const getBoardsByWorkspace = async (workspaceId: string) => {
   return await res;
 };
 
-export const getBoardById = async (boardId: string) => {
+export const getBoardByIdRequest = async (boardId: string) => {
   const reqParams = {
     url: `${boardBaseUri}/${boardId}`,
     method: "GET",
@@ -32,7 +32,7 @@ export const getBoardById = async (boardId: string) => {
   return await res;
 };
 
-export const editBoard = async (body: BoardI) => {
+export const editBoardRequest = async (body: BoardI) => {
   const reqParams = {
     url: `${boardBaseUri}/${body.id}`,
     method: "PUT",
@@ -42,7 +42,7 @@ export const editBoard = async (body: BoardI) => {
   return await res;
 };
 
-export const deleteBoard = async (boardId: string) => {
+export const deleteBoardRequest = async (boardId: string) => {
   const reqParams = {
     url: `${boardBaseUri}/${boardId}`,
     method: "DELETE",

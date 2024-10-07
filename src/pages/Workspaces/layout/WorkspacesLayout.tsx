@@ -1,15 +1,17 @@
+import { Outlet, useLoaderData } from "react-router-dom";
+import { getUserWorkspaces } from "../../../services/workspaceService";
+import {
+  AllWorkspacesI
+} from "../../../utils/interfaces/shared.interface";
 import WorkspacesSidebar from "../ui/WorkspacesSidebar/WorkspacesSidebar";
-import { Outlet } from "react-router-dom";
-import classes from"./WorkspacesLayout.module.css";
-import { WorkspaceI } from "../../../utils/interfaces/shared.interface";
+import classes from "./WorkspacesLayout.module.css";
 
 function WorkspacesLayout() {
-  const workspaces: WorkspaceI[] = [
-    {id: "", creatorId: "", title: ""}
-  ];
+  const workspaces = useLoaderData() as AllWorkspacesI;
   return (
     <div className={classes.layout}>
-      <WorkspacesSidebar workspaces={workspaces}/>
+      {}
+      <WorkspacesSidebar workspaces={workspaces.userWorkspaces} />
       <Outlet />
     </div>
   );
@@ -17,6 +19,7 @@ function WorkspacesLayout() {
 
 export default WorkspacesLayout;
 
-export function loader() {
-
+export async function loader(): Promise<AllWorkspacesI> {
+  const res = await getUserWorkspaces();
+  return await res.data;
 }

@@ -2,7 +2,7 @@ import React, { PropsWithChildren } from "react";
 
 interface Props {
   classes?: CSSModuleClasses
-  onClick: () => void
+  onClick?: () => void
 }
 
 

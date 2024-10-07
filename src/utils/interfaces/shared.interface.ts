@@ -10,6 +10,11 @@ export interface WorkspaceI {
   boards?: BoardI[];
 }
 
+export interface AllWorkspacesI {
+  userWorkspaces: WorkspaceI[];
+  sharedWorkspaces: WorkspaceI[];
+}
+
 export interface BoardI {
   id: number;
   title: string;

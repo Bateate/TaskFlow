@@ -2,7 +2,7 @@ import { onFetch } from "../../utils/onFetch";
 
 const workspaceMembersBaseUri = "http://localhost:3001/api/workspaceMembers";
 
-export const addMemberToWorkspace = async (body: {
+export const addMemberToWorkspaceRequest = async (body: {
   workspaceId: string;
   userId: string;
   role: string;
@@ -16,7 +16,7 @@ export const addMemberToWorkspace = async (body: {
   return await res;
 };
 
-export const getWorkspaceMembers = async (workspaceId: string) => {
+export const getWorkspaceMembersRequest = async (workspaceId: string) => {
   const reqParams = {
     url: `${workspaceMembersBaseUri}/${workspaceId}`,
     method: "GET",
@@ -25,7 +25,7 @@ export const getWorkspaceMembers = async (workspaceId: string) => {
   return await res;
 };
 
-export const removeMemberFromWorkspace = async (
+export const removeMemberFromWorkspaceRequest = async (
   workspaceId: string,
   userId: string
 ) => {

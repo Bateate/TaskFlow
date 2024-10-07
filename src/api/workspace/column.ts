@@ -7,7 +7,7 @@ import { onFetch } from "../../utils/onFetch";
 
 const colBaseUri = "http://localhost:3001/api/column";
 
-export const createCol = async (body: CreateColumnRequestI) => {
+export const createColRequest = async (body: CreateColumnRequestI) => {
   const reqParams = {
     url: `${colBaseUri}`,
     method: "POST",
@@ -16,7 +16,7 @@ export const createCol = async (body: CreateColumnRequestI) => {
   const res = await onFetch<CreateColumnResponseI>(reqParams);
   return await res;
 };
-export const getColByBoard = async (boardId: string) => {
+export const getColByBoardRequest = async (boardId: string) => {
   const reqParams = {
     url: `${colBaseUri}/${boardId}`,
     method: "GET",
@@ -24,7 +24,7 @@ export const getColByBoard = async (boardId: string) => {
   const res = await onFetch<ColumnI>(reqParams);
   return await res;
 };
-export const editCol = async (body: ColumnI) => {
+export const editColRequest = async (body: ColumnI) => {
   const reqParams = {
     url: `${colBaseUri}/${body.id}`,
     method: "PUT",
@@ -33,7 +33,7 @@ export const editCol = async (body: ColumnI) => {
   const res = await onFetch(reqParams);
   return await res;
 };
-export const deleteCol = async (colId: string) => {
+export const deleteColRequest = async (colId: string) => {
   const reqParams = {
     url: `${colBaseUri}/${colId}`,
     method: "DELETE",

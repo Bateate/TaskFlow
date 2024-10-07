@@ -3,7 +3,7 @@ import { onFetch } from "../../utils/onFetch";
 
 const authBaseUri = "http://localhost:3001/api/user";
 
-export const loginUser = async (body?: LoginParamsI) => {
+export const loginUserRequest = async (body?: LoginParamsI) => {
   const reqParams = {
     url: `${authBaseUri}/login`,
     method: "POST",
@@ -13,7 +13,7 @@ export const loginUser = async (body?: LoginParamsI) => {
   return await res;
 };
 
-export const createUser = async (body: RegisterParamsI) => {
+export const createUserRequest = async (body: RegisterParamsI) => {
   const reqParams = {
     url: `${authBaseUri}/register`,
     method: "POST",

@@ -5,7 +5,7 @@ function RootLayout() {
   return (
     <>
       <Header />
-      <main>
+      <main className={classes.main__container}>
         <Outlet />
       </main>
     </>

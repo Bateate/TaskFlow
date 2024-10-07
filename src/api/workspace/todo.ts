@@ -7,7 +7,7 @@ import { onFetch } from "../../utils/onFetch";
 
 const todoBaseUri = "http://localhost:3001/api/todo";
 
-export const createTodo = async (body: CreateTodoRequestI) => {
+export const createTodoRequest = async (body: CreateTodoRequestI) => {
   const reqParams = {
     url: `${todoBaseUri}`,
     method: "POST",
@@ -16,7 +16,7 @@ export const createTodo = async (body: CreateTodoRequestI) => {
   const res = await onFetch<CreateTodoResponseI>(reqParams);
   return await res;
 };
-export const getTodoById = async (todoId: number) => {
+export const getTodoByIdRequest = async (todoId: number) => {
   const reqParams = {
     url: `${todoBaseUri}/${todoId}`,
     method: "GET",
@@ -24,7 +24,7 @@ export const getTodoById = async (todoId: number) => {
   const res = await onFetch<TodoI>(reqParams);
   return await res;
 };
-export const editTodo = async (body: TodoI) => {
+export const editTodoRequest = async (body: TodoI) => {
   const reqParams = {
     url: `${todoBaseUri}/${body.id}`,
     method: "PUT",
@@ -33,7 +33,7 @@ export const editTodo = async (body: TodoI) => {
   const res = await onFetch(reqParams);
   return await res;
 };
-export const getTodoByCol = async (colId: number) => {
+export const getTodoByColRequest = async (colId: number) => {
   const reqParams = {
     url: `${todoBaseUri}/${colId}`,
     method: "GET",
@@ -41,7 +41,7 @@ export const getTodoByCol = async (colId: number) => {
   const res = await onFetch<TodoI[]>(reqParams);
   return await res;
 };
-export const deleteTodo = async (todoId: number) => {
+export const deleteTodoRequest = async (todoId: number) => {
   const reqParams = {
     url: `${todoBaseUri}/${todoId}`,
     method: "DELETE",

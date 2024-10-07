@@ -1,3 +1,4 @@
+
 interface FetchParamsI {
   url: string;
   method: string;
@@ -21,7 +22,6 @@ export async function onFetch<T>(params: FetchParamsI): Promise<{
   };
 
   const auth = localStorage.getItem("_auth");
-
   try {
     const options: RequestInit = {
       method: params.method || "GET",
@@ -31,9 +31,10 @@ export async function onFetch<T>(params: FetchParamsI): Promise<{
     };
 
     if (auth) {
+      
       options.headers = {
         ...options.headers,
-        Authorization: `Bearer ${auth}`,
+        "Authorization": `Bearer ${auth}`,
       };
     }
 
@@ -42,7 +43,7 @@ export async function onFetch<T>(params: FetchParamsI): Promise<{
     }
 
     const response = await fetch(params.url, options);
-
+    
     if (!response.ok) {
       throw new Error(
         `Network response was not ok, status: ${response.status}`
