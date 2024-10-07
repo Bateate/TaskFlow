@@ -1,11 +1,11 @@
-import { BoardProp } from "../../../../utils/interfaces/board.interface";
 import { Link } from "react-router-dom";
-import "./BoardCard.css";
+import classes from "./BoardCard.module.css";
+import { BoardI } from "../../../../utils/interfaces/shared.interface";
 
-function BoardCard({ board }: BoardProp) {
+function BoardCard(props: {board: BoardI}) {
   return (
-    <Link to={"board/" + board.id} className="board-card">
-      {board.title}
+    <Link to={"/board/" + props.board.id} className={classes.board__card}>
+      {props.board.title}
     </Link>
   );
 }

@@ -11,6 +11,9 @@ function Header() {
       <Link className={classes.link} to="/workspaces">
         Workspaces
       </Link>
+      <Link className={classes.link} to='auth/login'>
+        User
+      </Link>
     </header>
   );
 }

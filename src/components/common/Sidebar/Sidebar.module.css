@@ -3,4 +3,6 @@
   flex-direction: column;
   border-right: 1px solid #dedddda5;
   height: 100%;
+  width: fit-content;
+  padding: 16px;
 }

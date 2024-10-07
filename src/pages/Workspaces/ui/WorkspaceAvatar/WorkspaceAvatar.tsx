@@ -1,14 +1,18 @@
-import "./WorkspaceAvatar.css";
+import classes from "./WorkspaceAvatar.module.css";
 import editIcon from "../../../../assets/edit.svg"
+import { useLoaderData } from "react-router-dom";
+import { WorkspaceI } from "../../../../utils/interfaces/shared.interface";
 function WorkspaceAvatar() {
+  const workspace = useLoaderData() as WorkspaceI;
+
   return (
-    <div className="workspace__container">
-      <div className="workspace">
-        <div className="workspace__avatar">
-          <h1>T</h1>
+    <div className={classes.workspace__container}>
+      <div className={classes.workspace}>
+        <div className={classes.workspace__avatar}>
+          <h1>{workspace.title[0]}</h1>
         </div>
-        <div className="workspace__title">
-          <h3>TaskFlow <img src={editIcon} alt="Edit Icon" /></h3>
+        <div className={classes.workspace__title}>
+          <h3>{workspace.title} <img src={editIcon} alt="Edit Icon" /></h3>
           <h6>Private/Public</h6>
         </div>
       </div>

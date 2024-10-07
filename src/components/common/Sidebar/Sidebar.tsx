@@ -1,8 +1,8 @@
-import { Props } from "../../../utils/interfaces/props.interface";
+import { PropsWithChildren } from "react";
 import classes from "./Sidebar.module.css";
 
-function Sidebar({ children }: Props) {
-  return <div className={classes.sidebar}>{children}</div>;
+function Sidebar(props: PropsWithChildren) {
+  return <div className={classes.sidebar}>{props.children}</div>;
 }
 
 export default Sidebar;
