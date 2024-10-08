@@ -1,5 +1,11 @@
 import { BoardI, ColumnI, TodoI, WorkspaceI } from "./shared.interface";
 
+export interface DefaultResponseI<T> {
+  data: T;
+  error: string | null;
+  isLoading: boolean;
+}
+
 // Login
 export interface LoginParamsI {
   username?: string;
@@ -31,7 +37,6 @@ export interface CreateWorkspaceResponseI {
   newWorkspace: WorkspaceI;
 }
 
-
 // Board
 export interface CreateBoardRequestI {
   title: string;
@@ -57,6 +62,7 @@ export interface CreateColumnResponseI {
 // Todo
 export interface CreateTodoRequestI {
   title: string;
+  description?: string;
   columnId: number;
 }
 

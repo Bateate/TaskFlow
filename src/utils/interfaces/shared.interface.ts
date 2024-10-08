@@ -32,8 +32,8 @@ export interface ColumnI {
 
 export interface TodoI {
   id: number;
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   columnId: number;
   position: number;
 }

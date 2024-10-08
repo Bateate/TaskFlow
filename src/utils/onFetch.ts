@@ -1,3 +1,4 @@
+import { Navigate, redirect, useNavigate } from "react-router-dom";
 
 interface FetchParamsI {
   url: string;
@@ -44,12 +45,12 @@ export async function onFetch<T>(params: FetchParamsI): Promise<{
 
     const response = await fetch(params.url, options);
     
-    if (!response.ok) {
+    if (!response.ok) {   
+      // if(response.status == 401) 
       throw new Error(
         `Network response was not ok, status: ${response.status}`
       );
     }
-
     const result = await response.json();
     fetchResponse.data = result;
   } catch (err: any) {

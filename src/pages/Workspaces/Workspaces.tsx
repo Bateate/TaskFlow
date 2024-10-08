@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, Outlet } from "react-router-dom";
 import addMemberIcon from "../../assets/add-member.svg";
 import Button from "../../components/common/Button/Button";
 import Select from "../../components/common/Select/Select";
@@ -25,7 +25,7 @@ function Workspaces() {
   };
 
   return (
-    <section>
+    <section className={classes.workspace__page}>
       <article className={classes.activeWorkspace__container}>
         <WorkspaceAvatar />
         <Button classes={classes}>
@@ -40,14 +40,18 @@ function Workspaces() {
           label="Sort by"
           onChange={sortSelectHandler}
         />
-        <BoardsList boards={workspace.boards}/>
+        <Button>
+          <Link to="newBoard">Create new Board</Link>
+        </Button>
+        <BoardsList boards={workspace.boards} />
       </article>
+      <Outlet />
     </section>
   );
 }
 export default Workspaces;
 
-export async function loader(urlParams: { params: { workspaceId: string } }) {
-  const workspace = await getWorkspaceById(urlParams.params.workspaceId);
-  return (await workspace?.data);
+export async function loader({ params }: { params: { workspaceId: string } }) {
+  const workspace = await getWorkspaceById(params.workspaceId);
+  return await workspace?.data;
 }
