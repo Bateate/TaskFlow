@@ -18,7 +18,7 @@ function BoardLayout() {
 
 export default BoardLayout;
 
-export async function loader({ params }: { params: { boardId: string } }) {
+export async function loader({ params }: { params: { boardId: number } }) {
   const res = await getBoardByIdRequest(params.boardId);
   return (await res) as DefaultResponseI<BoardI>;
 }

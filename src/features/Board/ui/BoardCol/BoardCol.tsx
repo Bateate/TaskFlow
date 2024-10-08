@@ -1,46 +1,48 @@
 import { Link } from "react-router-dom";
 import { ColumnI, TodoI } from "../../../../utils/interfaces/shared.interface";
-import classes from "./BoardCol.module.css";
 import BoardTodo from "../BoardTodo/BoardTodo";
-import { DragEvent } from "react";
+import classes from "./BoardCol.module.css";
+import { useState } from "react";
 
 interface Props {
-  column?: ColumnI;
-  onDrop: (e: React.DragEvent<HTMLSpanElement>, position: number) => void;
-  onDragEnd: () => void
+  column: ColumnI;
+  onDrop: (
+    e: React.DragEvent<HTMLSpanElement>,
+    position: number,
+    columnId: number
+  ) => void;
+  onDrag: (todo: TodoI, colId: number) => void;
 }
 
 function BoardCol(props: Props) {
+  const [column, setColumn] = useState<ColumnI>(props.column);
   const allowDrag = (e: React.DragEvent<HTMLSpanElement>) => {
     e.preventDefault();
   };
   return (
     <div className={classes.column__container}>
-      <h2 className={classes.column__title}>{props.column?.title}</h2>
-      {props.column?.todos && (
+      <h2 className={classes.column__title}>{column.id}/{column?.title}</h2>
+      {column?.todos && (
         <div className={classes.todos__container}>
           {props?.column?.todos.map((todo) => (
-            <>
-              <span
-                className={classes.dopArea}
-                onDrop={(e) => props.onDrop(e, todo.position)}
-                onDragOver={allowDrag}
-                onDragEnd={props.onDragEnd}
-              ></span>
-              <BoardTodo key={`boardTodo${todo.id}`} todo={todo}></BoardTodo>
-            </>
+            <BoardTodo
+              key={`boardTodo${todo.id}`}
+              todo={todo}
+              onDrop={(e, position) => props.onDrop(e, position, column.id)}
+              onDrag={(todo) => props.onDrag(todo, column.id)}
+              onDragOver={allowDrag}
+            ></BoardTodo>
           ))}
         </div>
       )}
+      <span
+        className={classes.dropArea}
+        onDrop={(e) => props.onDrop(e, column.todos.length, column.id)}
+        onDragOver={allowDrag}
+      ></span>
       {props?.column && (
-          <>
+        <>
           <Link to={`${props.column.id}/newTodo`} className={classes.addTodo}>
-          <span
-            className={classes.dopArea}
-            onDrop={(e) => props.onDrop(e, -1)}
-            onDragOver={allowDrag}
-            onDragEnd={props.onDragEnd}
-          ></span>
             <h3>+ Add Todo</h3>
           </Link>
         </>

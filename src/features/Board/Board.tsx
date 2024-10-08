@@ -12,33 +12,59 @@ import { editTodoRequest } from "../../api/workspace/todo";
 import { useState } from "react";
 
 function Board() {
-  const [dragEnd, setDragEnd] = useState(false)
   const loaderData = useLoaderData() as DefaultResponseI<BoardI>;
-  const board = loaderData.data;
-  console.log('456');
+  const [dragedTodo, setDragedTodo] = useState<{
+    todo: TodoI;
+    colId: number;
+  } | null>();
+  const [board, setBoard] = useState<BoardI>(loaderData.data);
 
   const drop = async (
     e: React.DragEvent<HTMLSpanElement>,
     position: number,
-    col: ColumnI
+    colId: number
   ) => {
-    console.log(position, col);
+    console.log(position, colId);
 
     e.preventDefault();
-    const data = e.dataTransfer.getData("todo");
-    console.log(data);
+    const todoId = Number(e.dataTransfer.getData("todo"));
     const todoParams: TodoI = {
-      id: Number(data),
-      columnId: col.id,
-      position: position >= 0 ? position : col.todos.length - 1,
+      id: todoId,
+      columnId: colId,
+      position: position,
     };
     await editTodoRequest(todoParams);
+    const newBoard = setNewBoard(position, colId);
+    setBoard(newBoard);
   };
-  const dragEndHandelr = () => {
-    console.log('123');
-    
-    setDragEnd(() => !dragEnd)
-  }
+
+  const setNewBoard = (newPosition: number, newColId: number) => {
+
+    const newBoard: BoardI = {
+      ...board,
+      columns: board.columns?.map((col) => {
+        if (col.id === newColId) {
+          if (dragedTodo?.todo) {
+            col.todos.splice(newPosition, 0, dragedTodo.todo);
+          }
+        }
+        if (col.id === dragedTodo?.colId) {
+          col.todos.splice(dragedTodo.todo.position, 1);
+        }
+
+        col.todos = col.todos.map((todo, index) => {
+          return { ...todo, position: index };
+        });
+        return col;
+      }),
+    };
+    return newBoard;
+  };
+
+  const onDrag = (todo: TodoI, colId: number) => {
+    setDragedTodo({ todo, colId });
+  };
+
   return (
     <div className={classes.board}>
       <h1>{board.title}</h1>
@@ -47,8 +73,8 @@ function Board() {
           <BoardCol
             key={`baordCol${col.id}`}
             column={col}
-            onDrop={(e, posution) => drop(e, posution, col)}
-            onDragEnd={dragEndHandelr}
+            onDrop={(e, posution, colId) => drop(e, posution, colId)}
+            onDrag={(todo, colId) => onDrag(todo, colId)}
           />
         ))}
         <Link to="newCol" className={classes.newColButton}>
@@ -62,7 +88,7 @@ function Board() {
 
 export default Board;
 
-export async function loader({ params }: { params: { boardId: string } }) {
+export async function loader({ params }: { params: { boardId: number } }) {
   const res = await getBoardByIdRequest(params.boardId);
   return (await res) as DefaultResponseI<BoardI>;
 }

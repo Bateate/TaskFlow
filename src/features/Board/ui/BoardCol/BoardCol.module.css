@@ -21,8 +21,10 @@
     /* gap: 16px; */
 }
 
-.dopArea {
-    height: 16px;
+.dropArea {
+    min-height: 16px;
+    height: 100%;
+    display: block;
     min-width: 100%;
     border: none;
 }

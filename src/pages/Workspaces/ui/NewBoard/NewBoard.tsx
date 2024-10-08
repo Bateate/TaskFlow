@@ -25,21 +25,18 @@ function NewBoard() {
 
 export default NewBoard;
 
-export async function actions({
-  request,
-  params,
-}: {
+export async function actions(data: {
   request: Request;
   params: { workspaceId: string };
 }) {
-  const title = await (await request.formData()).get("title");
+  const title = await (await data.request.formData()).get("title");
   if (title) {
     const postData: CreateBoardRequestI = {
       title: title.toString(),
-      workspaceId: params.workspaceId,
+      workspaceId: data.params.workspaceId,
     };
     const res = await createBoardRequest(postData);
-    if (res.error) return redirect("newBoard");
-    return redirect('..')
+    if (res.error) return redirect(".");
+    return redirect("..");
   }
 }

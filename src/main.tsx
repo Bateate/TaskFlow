@@ -10,10 +10,11 @@ import Home from "./pages/Home";
 import WorkspacesLayout, { loader as workspacesLayoutLoader } from "./pages/Workspaces/layout/WorkspacesLayout";
 import Workspaces, { loader as workspacesLoader } from "./pages/Workspaces/Workspaces";
 import "./styles/index.css";
-import NewBoard, {actions as newBoardAction} from "./pages/Workspaces/ui/NewBoard/NewBoard";
-import NewBoardCol, { actions as newBoardColAction} from "./features/Board/ui/NewBoardCol/NewBoardCol";
-import NewBoardTodo, { actions as newBoardTodoAction} from "./features/Board/ui/NewBoardTodo/NewBoardTodo";
-import TodoModal, { loader as todoLoader, actions as todoAction } from "./features/Board/ui/TodoModal/TodoModal";
+import NewBoard, {actions as newBoardActions} from "./pages/Workspaces/ui/NewBoard/NewBoard";
+import NewBoardCol, { actions as newBoardColActions} from "./features/Board/ui/NewBoardCol/NewBoardCol";
+import NewBoardTodo, { actions as newBoardTodoActions} from "./features/Board/ui/NewBoardTodo/NewBoardTodo";
+import TodoModal, { loader as todoLoader, actions as todoActions } from "./features/Board/ui/TodoModal/TodoModal";
+import NewWorkspace, {actions as newWorkspaceActions } from "./pages/Workspaces/ui/NewWorkspace/NewWorkspace";
 
 const router = createBrowserRouter([
   {
@@ -37,10 +38,15 @@ const router = createBrowserRouter([
               {
                 path: "newBoard",
                 element: <NewBoard />,
-                action: newBoardAction
+                action: newBoardActions
               },
 
             ]
+          },
+          {
+            path: "newWorkspace",
+            element: <NewWorkspace />,
+            action: newWorkspaceActions
           },
         ],
       },
@@ -53,17 +59,17 @@ const router = createBrowserRouter([
             path: ':columnId/:todoId',
             element: <TodoModal />,
             loader: todoLoader,
-            action: todoAction
+            action: todoActions
           },
           {
             path: 'newCol',
             element: <NewBoardCol />,
-            action: newBoardColAction
+            action: newBoardColActions
           },
           {
             path: ':columnId/newTodo',
             element: <NewBoardTodo />,
-            action: newBoardTodoAction
+            action: newBoardTodoActions
           }
         ]
       },

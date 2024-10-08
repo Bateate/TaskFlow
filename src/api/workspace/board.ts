@@ -23,7 +23,7 @@ export const getBoardsByWorkspaceRequest = async (workspaceId: string) => {
   return await res;
 };
 
-export const getBoardByIdRequest = async (boardId: string) => {
+export const getBoardByIdRequest = async (boardId: number) => {
   const reqParams = {
     url: `${boardBaseUri}/${boardId}`,
     method: "GET",

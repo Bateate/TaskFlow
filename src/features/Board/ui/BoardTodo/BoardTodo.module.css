@@ -3,3 +3,10 @@
     padding: 16px;
     border-radius: 8px;
 }
+
+
+.dropArea {
+    height: 16px;
+    min-width: 100%;
+    border: none;
+}

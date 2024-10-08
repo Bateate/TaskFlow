@@ -30,8 +30,14 @@ function TodoModal() {
           defaultValue={todo.title}
         />
         <label htmlFor="body">Position</label>
-        <input type="number" name="position" className={classes.boardNameInput} defaultValue={todo.position} required/>
-        <label >Description</label>
+        <input
+          type="number"
+          name="position"
+          className={classes.boardNameInput}
+          defaultValue={todo.position}
+          required
+        />
+        <label>Description</label>
         <textarea
           name="description"
           className={classes.boardNameInput}
@@ -57,29 +63,27 @@ export async function loader(params: { params: { todoId: number } }) {
   return await res;
 }
 
-export async function actions(
-  {
+export async function actions({
   request,
   params,
 }: {
   request: Request;
-  params: { columnId: number, todoId: number };
-}
-) {
-  const formData = await (await request.formData());
-  const title = formData.get('title')
-  
+  params: { columnId: number; todoId: number };
+}) {
+  const formData = await await request.formData();
+  const title = formData.get("title");
+
   if (title) {
     const postData: TodoI = {
       id: params.todoId,
       title: title.toString(),
-      description: formData.get('description')?.toString(),
-      position: Number(formData.get('position')),
-      columnId: params.columnId
+      description: formData.get("description")?.toString(),
+      position: Number(formData.get("position")),
+      columnId: params.columnId,
     };
     const res = await editTodoRequest(postData);
     if (await res.error) return redirect(".");
-    return redirect('..')
+    return redirect("..");
   }
-  return null
+  return null;
 }

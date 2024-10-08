@@ -40,7 +40,9 @@ function Workspaces() {
           label="Sort by"
           onChange={sortSelectHandler}
         />
-        <Link to="newBoard">Create new Board</Link>
+        <Button>
+          <Link to="newBoard">Create new Board</Link>
+        </Button>
         <BoardsList boards={workspace.boards} />
       </article>
       <Outlet />
