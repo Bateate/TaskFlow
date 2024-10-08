@@ -1,5 +1,11 @@
 import { BoardI, ColumnI, TodoI, WorkspaceI } from "./shared.interface";
 
+export interface DefaultResponseI<T> {
+  data: T,
+  error: string | null,
+  isLoading: boolean
+}
+
 // Login
 export interface LoginParamsI {
   username?: string;

@@ -1,11 +1,12 @@
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Sidebar from "../../../../components/common/Sidebar/Sidebar";
-import { AllWorkspacesI, WorkspaceI } from "../../../../utils/interfaces/shared.interface";
-import classes from "./WorkspacesSidebar.module.css"
+import { WorkspaceI } from "../../../../utils/interfaces/shared.interface";
+import classes from "./WorkspacesSidebar.module.css";
 
-function WorkspacesSidebar(props?: { workspaces: WorkspaceI[] }) {
+function WorkspacesSidebar(props: { workspaces: WorkspaceI[] }) {
   const navigate = useNavigate();
-  const workspaces = useLoaderData() as AllWorkspacesI;
+  console.log(props);
+  
   
   const navigateTo = (workspace: WorkspaceI) => {
     navigate(`/workspaces/${workspace.id}`)
@@ -14,7 +15,7 @@ function WorkspacesSidebar(props?: { workspaces: WorkspaceI[] }) {
     <Sidebar>
       <h2 className={classes.sidebar__title}> Workspaces</h2>
       <div className={classes.workspaces__container}>
-      {props?.workspaces.map((workspace) => {
+      {props?.workspaces?.map((workspace) => {
         return <div className={classes.workspace} key={workspace.id}><h3 onClick={() => navigateTo(workspace)}>{workspace.title}</h3></div>;
       })}
 
