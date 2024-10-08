@@ -7,8 +7,6 @@ import { DefaultResponseI } from "../../../utils/interfaces/req-res.interface";
 
 function WorkspacesLayout() {
   const loaderData = useLoaderData() as AllWorkspacesI;
-  console.log(loaderData);
-  
   return (
     <div className={classes.layout}>
       {}

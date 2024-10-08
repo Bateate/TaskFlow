@@ -5,8 +5,6 @@ import classes from "./WorkspacesSidebar.module.css";
 
 function WorkspacesSidebar(props: { workspaces: WorkspaceI[] }) {
   const navigate = useNavigate();
-  console.log(props);
-  
   
   const navigateTo = (workspace: WorkspaceI) => {
     navigate(`/workspaces/${workspace.id}`)

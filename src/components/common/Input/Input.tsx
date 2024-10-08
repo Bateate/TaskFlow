@@ -3,6 +3,7 @@ import React, { HTMLInputTypeAttribute } from "react";
 interface Props {
   label: string;
   type: HTMLInputTypeAttribute;
+  initialValue?: string;
   classes?: CSSModuleClasses;
   onChange: (value: any) => void;
 }

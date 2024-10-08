@@ -13,6 +13,7 @@ import "./styles/index.css";
 import NewBoard, {actions as newBoardAction} from "./pages/Workspaces/ui/NewBoard/NewBoard";
 import NewBoardCol, { actions as newBoardColAction} from "./features/Board/ui/NewBoardCol/NewBoardCol";
 import NewBoardTodo, { actions as newBoardTodoAction} from "./features/Board/ui/NewBoardTodo/NewBoardTodo";
+import TodoModal, { loader as todoLoader, actions as todoAction } from "./features/Board/ui/TodoModal/TodoModal";
 
 const router = createBrowserRouter([
   {
@@ -49,12 +50,18 @@ const router = createBrowserRouter([
         loader: boardLoader,
         children: [
           {
+            path: ':columnId/:todoId',
+            element: <TodoModal />,
+            loader: todoLoader,
+            action: todoAction
+          },
+          {
             path: 'newCol',
             element: <NewBoardCol />,
             action: newBoardColAction
           },
           {
-            path: 'newTodo',
+            path: ':columnId/newTodo',
             element: <NewBoardTodo />,
             action: newBoardTodoAction
           }

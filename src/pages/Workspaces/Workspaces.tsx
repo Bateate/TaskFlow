@@ -50,8 +50,6 @@ function Workspaces() {
 export default Workspaces;
 
 export async function loader({ params }: { params: { workspaceId: string } }) {
-  console.log("WorkspaceLoader", params);
-
   const workspace = await getWorkspaceById(params.workspaceId);
   return await workspace?.data;
 }

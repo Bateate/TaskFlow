@@ -5,7 +5,7 @@ import { BoardI } from "../../../utils/interfaces/shared.interface";
 
 function BoardLayout() {
   const loaderData = useLoaderData() as DefaultResponseI<BoardI>;
-  console.log(loaderData.data);
+  (loaderData.data);
   const board = loaderData.data;
   return (
     <>

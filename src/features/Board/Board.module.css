@@ -1,0 +1,18 @@
+.board {
+    display: block;
+    padding: 32px;
+}
+
+.board__content__container {
+    display: flex;
+    margin-top: 32px;
+    gap: 32px;
+}
+
+.newColButton {
+    background-color: rgba(255, 255, 255, 0.054);
+    border-radius: 8px;
+    padding: 8px;
+    display: flex;
+    height: fit-content;
+}

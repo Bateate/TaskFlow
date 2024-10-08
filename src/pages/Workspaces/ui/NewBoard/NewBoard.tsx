@@ -5,8 +5,6 @@ import { createBoardRequest } from "../../../../api/workspace/board";
 import { CreateBoardRequestI } from "../../../../utils/interfaces/req-res.interface";
 
 function NewBoard() {
-  console.log("asdasd");
-
   return (
     <Modal>
       <Form method="post" className={classes.form}>
@@ -36,8 +34,6 @@ export async function actions({
 }) {
   const title = await (await request.formData()).get("title");
   if (title) {
-    console.log("Title: ", title);
-
     const postData: CreateBoardRequestI = {
       title: title.toString(),
       workspaceId: params.workspaceId,
