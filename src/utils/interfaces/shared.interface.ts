@@ -19,7 +19,7 @@ export interface BoardI {
   id: number;
   title: string;
   workspaceId: string;
-  columns?: ColumnI[];
+  columns: ColumnI[];
 }
 
 export interface ColumnI {

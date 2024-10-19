@@ -69,7 +69,7 @@ function Board() {
     <div className={classes.board}>
       <h1>{board.title}</h1>
       <div className={classes.board__content__container}>
-        {board?.columns?.map((col) => (
+        {board.columns?.map((col) => (
           <BoardCol
             key={`baordCol${col.id}`}
             column={col}
